@@ -6,6 +6,13 @@ Bash template:
 $ dotnet test && git commit -am tcr || git reset --hard
 ```
 
+Commands:
+
+```bash
+$ sudo apt install inotify-tools # To be able to run the watch command.
+$ git flow feature finish -S -r tcr # To squash during merge and rebase before merging.
+```
+
 ## Project Infrastructure
 
 ### Setting Up Git
@@ -615,4 +622,5 @@ Create a file named tasks.json in the .vscode folder with the following contents
 ```
 https://www.youtube.com/watch?v=tnO2Mos0RjU
 https://youtu.be/IIKndRX5qHw
+https://git.logikum.hu/flow/feature
 ```

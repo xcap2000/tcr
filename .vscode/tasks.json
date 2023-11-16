@@ -183,6 +183,32 @@
             }
         },
         {
+            "label": "test: unit (watch/tcr)",
+            "type": "shell",
+            "group": "test",
+            "isBackground": true,
+            "windows": {
+                "command": ""
+            },
+            "linux": {
+                "command": "${workspaceFolder}/.vscode/watch.sh"
+            },
+            "problemMatcher": {
+                "base": "$msCompile",
+                "background": {
+                    "beginsPattern": {
+                        "regexp": "dotnet watch 🚀"
+                    },
+                    "endsPattern": {
+                        "regexp": "dotnet watch [❌⌚]"
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
             "label": "test: integration",
             "type": "process",
             "group": "test",
