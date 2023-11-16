@@ -1,0 +1,427 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "src: run",
+            "type": "process",
+            "group": "build",
+            "command": "dotnet",
+            "isBackground": true,
+            "windows": {
+                "args": [
+                    "run",
+                    "--project",
+                    "${workspaceFolder}\\src\\Tcr\\Tcr.csproj",
+                    "/clp:NoSummary"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "run",
+                    "--project",
+                    "${workspaceFolder}/src/Tcr/Tcr.csproj",
+                    "/clp:NoSummary"
+                ]
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "src: run (watch)",
+            "type": "process",
+            "group": "build",
+            "command": "dotnet",
+            "isBackground": true,
+            "windows": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}\\src\\Tcr\\Tcr.csproj",
+                    "run",
+                    "/clp:NoSummary"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}/src/Tcr/Tcr.csproj",
+                    "run",
+                    "/clp:NoSummary"
+                ]
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "all: clean",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet clean",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "all: restore",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet restore",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "all: build",
+            "type": "shell",
+            "group": "build",
+            "command": "dotnet build /clp:NoSummary",
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "test: unit",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "windows": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Unit",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Unit",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "test: unit (watch)",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "isBackground": true,
+            "windows": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Unit",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Unit",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": {
+                "base": "$msCompile",
+                "background": {
+                    "beginsPattern": {
+                        "regexp": "dotnet watch 🚀"
+                    },
+                    "endsPattern": {
+                        "regexp": "dotnet watch [❌⌚]"
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "test: integration",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "windows": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Integration",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Integration",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "test: integration (watch)",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "isBackground": true,
+            "windows": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Integration",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Integration",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": {
+                "base": "$msCompile",
+                "background": {
+                    "beginsPattern": {
+                        "regexp": "dotnet watch 🚀"
+                    },
+                    "endsPattern": {
+                        "regexp": "dotnet watch [❌⌚]"
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "test: functional",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "windows": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Functional",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Functional",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "test: functional (watch)",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "isBackground": true,
+            "windows": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Functional",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "--filter",
+                    "Category=Functional",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": {
+                "base": "$msCompile",
+                "background": {
+                    "beginsPattern": {
+                        "regexp": "dotnet watch 🚀"
+                    },
+                    "endsPattern": {
+                        "regexp": "dotnet watch [❌⌚]"
+                    }
+                }
+            },
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "test: all",
+            "type": "process",
+            "group": "test",
+            "command": "dotnet",
+            "windows": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "${workspaceFolder}\\test\\Tcr.Tests\\Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "linux": {
+                "args": [
+                    "test",
+                    "--logger",
+                    "console;verbosity=detailed",
+                    "${workspaceFolder}/test/Tcr.Tests/Tcr.Tests.csproj",
+                    "/clp:NoSummary",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=./lcov.info",
+                    "/p:Exclude=\"[coverlet.*]*,[*]Coverlet.Core*,[System*]*,[xunit.*]*\""
+                ]
+            },
+            "problemMatcher": "$msCompile",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "src: publish x64 (linux)",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "windows": {
+                "command": "dotnet publish src\\Tcr\\Tcr.csproj -c Release -r linux-x64 --self-contained -o src\\Tcr\\bin\\Release\\net7.0\\win10-x64\\ /p:PublishSingleFile=true"
+            },
+            "linux": {
+                "command": "dotnet publish src/Tcr/Tcr.csproj -c Release -r linux-x64 --self-contained -o src/Tcr/bin/Release/net7.0/win10-x64/ /p:PublishSingleFile=true"
+            }
+        }
+    ]
+}
