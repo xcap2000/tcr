@@ -8,6 +8,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <CodeAnalysisRuleSet>Tcr.Tests.ruleset</CodeAnalysisRuleSet>
+    <RootNamespace>Tcr</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
