@@ -27,4 +27,17 @@ public class CalculatorTests
         // Then
         Assert.Equal(3, result);
     }
+
+    [Fact]
+    public void Sum_Overflows()
+    {
+        // Given
+        var calculator = new Calculator();
+
+        // When
+        Assert.Throws<OverflowException>(() => calculator.Sum(int.MaxValue, int.MaxValue));
+
+        // Then
+
+    }
 }
